@@ -23,7 +23,7 @@ public class Hash {
 		String ret = "";
 		for(int i = 0; i < data.length; i++)
 		{ int temp = Byte.toUnsignedInt(data[i]);
-		  String.format(ret, temp);}
+		  ret += String.format("%02x", temp);}
 		return ret;
 	}
 
