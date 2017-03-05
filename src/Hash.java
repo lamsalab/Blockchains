@@ -1,4 +1,42 @@
+import java.util.Arrays;
 
 public class Hash {
+	private byte[] data;
+
+	public Hash(byte[] data) {
+		this.data = data;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public boolean isValid() {
+		if (this.data[0]==0 && this.data[1] == 0 && this.data[2] == 0){
+			return true;
+		}
+		else{return false;
+	}
+	}
+
+	public String toString() {
+		String ret = "";
+		for(int i = 0; i < data.length; i++)
+		{ int temp = Byte.toUnsignedInt(data[i]);
+		  String.format(ret, temp);}
+		return ret;
+	}
+
+	public boolean equals(Object other) {
+		if (other instanceof Hash)
+		{
+			Hash o = (Hash) other;
+			if (Arrays.equals(o.data, this.data)) {
+				return true;
+			}
+			else {return false;}
+		}
+		else {return false;}
+	}
 
 }
