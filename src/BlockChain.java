@@ -18,17 +18,15 @@ public class BlockChain {
 	private int initial;
 
 	public BlockChain(int initial) throws NoSuchAlgorithmException {
-		num++;
 		first = new Node(new Block(num, initial), null);
 		last = first;
 		netTransaction = initial;
 		this.initial = initial;
+		num++;
 	}
 
 	public Block mine(int amount) throws NoSuchAlgorithmException{
-    	Block candidate = new Block(num, amount, last.value.getHash());
-    	if Block
-    	
+    	return new Block(num, amount, last.value.getHash());
     }
 
 	public int getSize() {
@@ -36,8 +34,8 @@ public class BlockChain {
 	}
 
 	public void append(Block blk) {
-		if (){
-			
+		if (!blk.getHash().isValid() && !blk.getPrevHash().equals(last.value.getHash())){
+			throw new IllegalArgumentException();
 		}
 		Node lastNode = new Node(blk, null);
 		last.next = lastNode;
@@ -62,10 +60,14 @@ public class BlockChain {
 		}
 	}
 
+	public Hash getHash() {
+		return last.value.getHash();
+	}
+	
 	public boolean isValidBlockChain() {
 		Node cur = first;
 		while(cur.next != null){
-			if(!(cur.value.getHash().isValid() || cur.value.getHash() == cur.value.getPrevHash() || netTransaction > 0)){
+			if(!(cur.value.getHash().isValid() || cur.value.getHash().equals(cur.value.getPrevHash()) || netTransaction > 0)){
 				return false;
 			}
 			cur = cur.next;
