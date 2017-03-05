@@ -9,6 +9,13 @@ public class Block {
 	private long nonce;
 	private Hash curHash;
 
+	public Block(int num, int amount) throws NoSuchAlgorithmException {
+		this.num = num;
+		this.amount = amount;
+		this.nonce = miningNonce(num, amount, null);
+		this.curHash = calculateHash(num, amount, null, nonce);
+	}
+	
 	public Block(int num, int amount, Hash prevHash) throws NoSuchAlgorithmException {
 		this.num = num;
 		this.amount = amount;
