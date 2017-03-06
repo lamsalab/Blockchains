@@ -46,11 +46,23 @@ public class Block {
 		return curHash;
 	}
 
+	/**
+	 * @return String
+	 */
 	public String toString() {
 		return "Block " + this.num + "(Amount: " + this.amount + ", Nonce: " + this.nonce + ", prevHash: "
 				+ this.prevHash + ", hash: " + this.curHash + ")";
 	}
 
+	/**
+	 * 
+	 * @param num a positive integer
+	 * @param amount a positive integer
+	 * @param prevHash a Hash
+	 * @param nonce a long
+	 * @return Hash
+	 * @throws NoSuchAlgorithmException
+	 */
 	public static Hash calculateHash(int num, int amount, Hash prevHash, long nonce) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("sha-256");
 		if (prevHash == null) {
@@ -62,6 +74,14 @@ public class Block {
 		return hash;
 	}
 
+	/**
+	 * 
+	 * @param num a positive integer
+	 * @param amount a positive integer
+	 * @param prevHash a Hash
+	 * @return long
+	 * @throws NoSuchAlgorithmException
+	 */
 	public static long miningNonce(int num, int amount, Hash prevHash) throws NoSuchAlgorithmException {
 		for (long nonce = 0; nonce <= Long.MAX_VALUE; nonce++) {
 			if (calculateHash(num, amount, prevHash, nonce).isValid()) {

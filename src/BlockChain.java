@@ -32,6 +32,11 @@ public class BlockChain {
 		return num;
 	}
 
+	/**
+	 * 
+	 * @param blk a block
+	 * @return void
+	 */
 	public void append(Block blk) {
 		if (!blk.getHash().isValid() || !blk.getPrevHash().equals(last.value.getHash())) {
 			throw new IllegalArgumentException();
@@ -44,6 +49,10 @@ public class BlockChain {
 
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 */
 	public boolean removeLast() {
 		if (first == last) {
 			return false;
@@ -64,6 +73,10 @@ public class BlockChain {
 		return last.value.getHash();
 	}
 
+	/**
+	 * 
+	 * @return boolean
+	 */
 	public boolean isValidBlockChain() {
 		Node cur = first;
 		while (cur.next != null) {
@@ -81,6 +94,9 @@ public class BlockChain {
 		System.out.println("Alice: " + netTransaction + ", Bob: " + (initial - netTransaction));
 	}
 
+	/**
+	 * @return String
+	 */
 	public String toString() {
 		String ret = "";
 		Node cur = first;

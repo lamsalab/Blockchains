@@ -11,6 +11,9 @@ public class Hash {
 		return data;
 	}
 
+	/**
+	 * @return boolean
+	 */
 	public boolean isValid() {
 		if (this.data[0] == 0 && this.data[1] == 0 && this.data[2] == 0) {
 			return true;
@@ -19,6 +22,9 @@ public class Hash {
 		}
 	}
 
+	/**
+	 * @return String
+	 */
 	public String toString() {
 		String ret = "";
 		for (int i = 0; i < data.length; i++) {
@@ -28,6 +34,10 @@ public class Hash {
 		return ret;
 	}
 
+	/**
+	 * @param other an Object
+	 * @return boolean
+	 */
 	public boolean equals(Object other) {
 		if (other instanceof Hash) {
 			Hash o = (Hash) other;

@@ -58,7 +58,7 @@ public class BlockChainDriver {
 
 			if (command.equals("quit")) {
 				scanner.close();
-				 System.exit(0);
+				System.exit(0);
 			}
 
 		}
