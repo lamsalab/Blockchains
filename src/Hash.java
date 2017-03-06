@@ -12,31 +12,33 @@ public class Hash {
 	}
 
 	public boolean isValid() {
-		if (this.data[0]==0 && this.data[1] == 0 && this.data[2] == 0){
+		if (this.data[0] == 0 && this.data[1] == 0 && this.data[2] == 0) {
 			return true;
+		} else {
+			return false;
 		}
-		else{return false;
-	}
 	}
 
 	public String toString() {
 		String ret = "";
-		for(int i = 0; i < data.length; i++)
-		{ int temp = Byte.toUnsignedInt(data[i]);
-		  ret += String.format("%02x", temp);}
+		for (int i = 0; i < data.length; i++) {
+			int temp = Byte.toUnsignedInt(data[i]);
+			ret += String.format("%02x", temp);
+		}
 		return ret;
 	}
 
 	public boolean equals(Object other) {
-		if (other instanceof Hash)
-		{
+		if (other instanceof Hash) {
 			Hash o = (Hash) other;
 			if (Arrays.equals(o.data, this.data)) {
 				return true;
+			} else {
+				return false;
 			}
-			else {return false;}
+		} else {
+			return false;
 		}
-		else {return false;}
 	}
 
 }

@@ -48,19 +48,17 @@ public class BlockChainDriver {
 			}
 
 			if (command.equals("help")) {
-				System.out.println("Valid commands:\n" 
-			            + "	mine: discovers the nonce for a given transaction\n"
+				System.out.println("Valid commands:\n" + "	mine: discovers the nonce for a given transaction\n"
 						+ "	append: appends a new block onto the end of the chain\n"
 						+ "	remove: removes the last block from the end of the chain\n"
 						+ "	check: checks that the block chain is valid \n"
-						+ "	report: reports the balances of Alice and Bob \n" 
-						+ "	help: prints this list of commands\n"
-						+ "	quit: quits the program");
+						+ "	report: reports the balances of Alice and Bob \n"
+						+ "	help: prints this list of commands\n" + "	quit: quits the program");
 			}
 
 			if (command.equals("quit")) {
 				scanner.close();
-				return;
+				 System.exit(0);
 			}
 
 		}

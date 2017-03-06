@@ -42,7 +42,7 @@ public class Block {
 		return prevHash;
 	}
 
-	Hash getHash() {
+	public Hash getHash() {
 		return curHash;
 	}
 
@@ -56,10 +56,8 @@ public class Block {
 		if (prevHash == null) {
 			prevHash = new Hash(new byte[] { 0, 0, 0 });
 		}
-		md.update(ByteBuffer.allocate(4).putInt(num).array());
-		md.update(ByteBuffer.allocate(4).putInt(amount).array());
-		md.update(ByteBuffer.allocate(prevHash.getData().length).put(prevHash.getData()).array());
-		md.update(ByteBuffer.allocate(8).putLong(nonce).array());
+		md.update(ByteBuffer.allocate(4 + 4 + prevHash.getData().length + 8).putInt(num).putInt(amount)
+				.put(prevHash.getData()).putLong(nonce).array());
 		Hash hash = new Hash(md.digest());
 		return hash;
 	}
